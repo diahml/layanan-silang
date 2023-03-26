@@ -81,7 +81,7 @@ class AdminPeminjamanController extends Controller
         Peminjaman::where('id', $peminjaman->id)
                 ->update($validatedData);
         Book::where('id', $peminjaman->book_id)
-                ->update(['stok' => 1]);
+                ->update(['stock' => 1]);
 
         $return=Peminjaman::where([
             'user_id'=>$peminjaman->user_id,
@@ -125,7 +125,7 @@ class AdminPeminjamanController extends Controller
         Peminjaman::where('id', $peminjaman->id)
                 ->update($validatedData);
         Book::where('id', $peminjaman->book_id)
-                ->update(['stok' => 1]);
+                ->update(['stock' => 1]);
 
         $peminjamanApproved=Peminjaman::select('*')->where([
             ['user_id', $peminjaman->user_id ],
@@ -255,7 +255,7 @@ class AdminPeminjamanController extends Controller
         foreach($delete as $delete){
             Peminjaman::destroy($delete->id);
             Book::where('id', $delete->book_id)
-                ->update(['stok' => 1]);
+                ->update(['stock' => 1]);
         }
 
         return redirect('/admin/peminjaman');
@@ -272,7 +272,7 @@ class AdminPeminjamanController extends Controller
         foreach($delete as $delete){
             Peminjaman::destroy($delete->id);
             Book::where('id', $delete->book_id)
-                ->update(['stok' => 1]);
+                ->update(['stock' => 1]);
         }
 
         return redirect('/admin/peminjaman/dipinjam');

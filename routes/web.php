@@ -151,6 +151,8 @@ Route::resource('/admin/kegiatan/kategori', AdminPostCategoryController::class)-
 
 Route::resource('/admin/kegiatan', AdminPostController::class)->middleware('admin');
 
+
+
 Route::resource('/admin/buku/kategori', AdminBookCategoryController::class)->middleware('admin');
 
 Route::resource('/admin/buku', AdminBookController::class)->middleware('admin');

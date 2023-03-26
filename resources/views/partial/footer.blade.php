@@ -1,4 +1,5 @@
 <!-- Footer -->
+@include('partial.link')
 <footer id="footer">
 <div class="footer-newslette pt-2">
     <!-- Section: Social media -->

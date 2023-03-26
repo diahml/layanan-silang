@@ -5,7 +5,7 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
   
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar text-white">
         <ul>
           <li class="nav-item {{ ($active==="home" ? 'active' :'') }}"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item {{ ($active==="katalog" ? 'active' :'') }}"><a class="nav-link " href="/katalog-buku">Katalog Buku</a></li>
@@ -20,7 +20,7 @@
           @auth
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Welcome {{ auth()->user()->instansi }}
+              Welcome {{ auth()->user()->commissariat }}
             </a>
             <ul class="dropdown-menu">
               <li>

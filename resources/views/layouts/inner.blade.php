@@ -12,7 +12,7 @@
   <!-- Favicons -->
   <link href="/vendors/img/favicon.png" rel="icon">
   <link href="/vendors/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -228,6 +228,19 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
+        <a class="nav-link  {{ ($active ==="data-school" ? '' :'collapsed') }}" data-bs-target="#school-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>School</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="school-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/sekolah">
+              <i class="bi bi-circle"></i><span>List of School</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link  {{ ($active ==="data-book" ? '' :'collapsed') }}" data-bs-target="#katalogue-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Katalogue</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -267,6 +280,24 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
+        <a class="nav-link  {{ ($active ==="data-post" ? '' :'collapsed') }}" data-bs-target="#post-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Post</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="post-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/kegiatan">
+              <i class="bi bi-circle"></i><span>List of Post</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/kegiatan/kategori">
+              <i class="bi bi-circle"></i><span>List of Post Categories</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      {{-- <li class="nav-item">
         <a class="nav-link  {{ ($active ==="data-book" ? '' :'collapsed') }}" data-bs-target="#katalogue-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Diah</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -303,7 +334,7 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
+      </li><!-- End Tables Nav --> --}}
 @endcan
 @can('member')
       <li class="nav-heading">Member</li>

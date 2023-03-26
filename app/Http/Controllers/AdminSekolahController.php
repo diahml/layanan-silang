@@ -16,6 +16,7 @@ class AdminSekolahController extends Controller
     public function index()
     {
         return view ('admin.sekolah.index',[
+            "title"=>"School",
             "active"=>"admin/sekolah",
             "sekolah"=>User::select('*')->where('is_school', 1)->get(),
         ]);
@@ -29,6 +30,7 @@ class AdminSekolahController extends Controller
     public function create()
     {
         return view('admin.sekolah.create',[
+            "title"=>"School",
             "active"=>'admin/sekolah',
         ]);
     }
@@ -93,6 +95,7 @@ class AdminSekolahController extends Controller
     public function edit(User $sekolah)
     {
         return view('admin.sekolah.edit',[
+            "title"=>"School",
             "active"=>"admin/sekolah",
             "sekolah"=>$sekolah,
         ]);

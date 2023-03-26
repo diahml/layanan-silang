@@ -1,6 +1,5 @@
-@extends('admin.layout.main')
-
-@section('container')
+@extends('layouts.inner')
+@section('containers')
 
 <div class="card">
     <div class="card-body">
@@ -20,8 +19,8 @@
       @foreach ($peminjaman as $peminjaman)
       <tr>
         <th scope="row" id="row">{{ $loop->iteration }}</th>
-        <td>{{ $peminjaman->book->judul }}</td>
-        <td>{{ $peminjaman->book->no_buku }}</td>
+        <td>{{ $peminjaman->book->title }}</td>
+        <td>{{ $peminjaman->book->booknum }}</td>
         <td id="action_{{ $loop->iteration }}">
           <a href="/admin/peminjaman/approved/{{ $peminjaman->id }}" class="btn btn-success" id="terima">Terima</a>
           <a href="/admin/peminjaman/ditolak/{{ $peminjaman->id }}" class="btn btn-danger" id="tolak">Tolak</a>

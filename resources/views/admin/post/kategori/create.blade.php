@@ -1,10 +1,8 @@
-@extends('admin.layout.main')
-
-@section('container')
-
+@extends('layouts.inner')
+@section('containers')
 <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Input Data Buku Baru</h5>
+      <h5 class="card-title">Input New Post Category</h5>
 
 <form method="post" action="/admin/kegiatan/kategori">
     @csrf
@@ -12,10 +10,10 @@
       <form class="row g-3">
 
         <div class="col-10 mt-3">
-          <label for="name" class="form-label">Kategori Blog/Post</label>
+          <label for="name" class="form-label">Blog/Post Category</label>
           <input type="text" class="form-control @error('name') is-invalid"
               
-          @enderror id="name" name="name" placeholder="Kategori Blog/Post" value="{{ old('name') }}">
+          @enderror id="name" name="name" placeholder="Blog/Post Category" value="{{ old('name') }}">
           @error('name')
           <div class="invalid-feedback">
             {{ $message }}

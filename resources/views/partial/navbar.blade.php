@@ -10,7 +10,8 @@
     </a>    <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
-    <nav id="navbar" class="navbar">
+    <nav id="navbar" class="navbar navbar-expand-lg">
+      
       <ul>
         @auth
         <li class="nav-item {{ ($active==="home" ? 'active' :'') }}"><a class="nav-link" href="/">Home</a></li>
@@ -26,6 +27,8 @@
         <li class="nav-item {{ ($active==="peminjaman" ? 'active' :'') }}"><a class="nav-link" href="/peminjaman">Peminjaman Buku</a></li>
         @endauth
       </ul>
+
+      
 
       <ul class="navbar-nav ml-auto">
       

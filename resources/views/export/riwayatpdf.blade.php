@@ -43,10 +43,10 @@
   @foreach ($data as $peminjaman)
   <tr>
     <td>{{ $loop->iteration }}<</td>
-    <td>{{ $peminjaman->user->instansi }}</td>
-    <td>{{ $peminjaman->book->judul}}</td>
-    <td>{{ $peminjaman->book->no_buku }}</td>
-    <td>{{ $peminjaman->book->npb }}</td>
+    <td>{{ $peminjaman->user->commissariat }}</td>
+    <td>{{ $peminjaman->book->title}}</td>
+    <td>{{ $peminjaman->book->booknum }}</td>
+    <td>{{ $peminjaman->book->backnum }}</td>
     <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
     <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td>
   </tr>

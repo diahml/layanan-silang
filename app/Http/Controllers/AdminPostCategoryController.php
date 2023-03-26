@@ -15,6 +15,7 @@ class AdminPostCategoryController extends Controller
     public function index()
     {
         return view ('admin.post.kategori.index',[
+            "title"=>"Post Categories",
             "active"=>"admin/kegiatan",
             "post_categories"=>Post_category::all(),
         ]);
@@ -28,6 +29,7 @@ class AdminPostCategoryController extends Controller
     public function create()
     {
         return view('admin.post.kategori.create',[
+            "title"=>"Post Categories",
             "active"=>'admin/kegiatan',
         ]);
     }
@@ -70,6 +72,7 @@ class AdminPostCategoryController extends Controller
     public function edit(Post_category $kategori)
     {
         return view('admin.post.kategori.edit',[
+            "title"=>"Post Categories",
             "active"=>"admin/kegiatan",
             "post_category"=>$kategori,
         ]);

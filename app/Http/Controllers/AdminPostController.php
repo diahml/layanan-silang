@@ -20,6 +20,7 @@ class AdminPostController extends Controller
     {
         //
         return view ('admin.post.index',[
+            "title"=>"Post",
             "active"=>"admin/kegiatan",
             "posts"=>Post::all(),
         ]);
@@ -41,6 +42,7 @@ class AdminPostController extends Controller
     public function create()
     {
         return view('admin.post.create',[
+            "title"=>"Post",
             "active"=>'admin/kegiatan',
             "post_categories"=>Post_category::all(),
         ]);
@@ -83,6 +85,7 @@ class AdminPostController extends Controller
     {
         
         return view('admin.post.show',[
+            "title"=>"Post",
             "active"=>"admin/kegiatan",
            "post"=>$kegiatan
         ]);
@@ -97,6 +100,7 @@ class AdminPostController extends Controller
     public function edit(Post $kegiatan)
     {
         return view('admin.post.edit',[
+            "title"=>"Post",
             "active"=>"admin/kegiatan",
             "post_categories"=>Post_category::all(),
             "post"=>$kegiatan,

@@ -1,6 +1,5 @@
-@extends('admin.layout.main')
-
-@section('container')
+@extends('layouts.inner')
+@section('containers')
 
 <div class="card">
     <div class="card-body">

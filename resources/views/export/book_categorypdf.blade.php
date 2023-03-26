@@ -38,7 +38,7 @@
   @foreach ($data as $book_category)
   <tr>
     <td>{{ $loop->iteration }}</td>
-    <td>{{ $book_category->kelas }}</td>
+    <td>{{ $category->name }}</td>
   </tr>
   @endforeach
   

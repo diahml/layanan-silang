@@ -40,9 +40,9 @@
   @foreach ($data as $sekolah)
   <tr>
     <td>{{ $loop->iteration }}<</td>
-    <td>{{ $sekolah->instansi }}</td>
-    <td>{{ $sekolah->alamat}}</td>
-    <td>0{{ $sekolah->kontak}}</td>
+    <td>{{ $sekolah->commissariat }}</td>
+    <td>{{ $sekolah->address}}</td>
+    <td>0{{ $sekolah->phone}}</td>
   </tr>
   @endforeach
   

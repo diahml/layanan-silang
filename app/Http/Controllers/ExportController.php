@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Book_category;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Peminjaman;
@@ -35,7 +36,7 @@ class ExportController extends Controller
     public function book_categorypdf(){
 
         //  // Ambil data dari database atau sumber data lainnya
-         $data = Book_category::all(); 
+         $data = Category::all(); 
         view()->share('data', $data);
         $pdf = PDF::loadView('export.book_categorypdf', ['data' => $data])->setOptions(['defaultFont' => 'sans-serif']);
         // $pdf = PDF:: loadview('export.bookpdf');
@@ -73,7 +74,7 @@ class ExportController extends Controller
         //  // Ambil data dari database atau sumber data lainnya
 
          $data = User::where([
-            ['role', 'sekolah']
+            ['is_school', 1]
          ])->get(); 
         view()->share('data', $data);
         $pdf = PDF::loadView('export.sekolahpdf', ['data' => $data])->setOptions(['defaultFont' => 'sans-serif']);
@@ -84,7 +85,7 @@ class ExportController extends Controller
     public function sekolahexcel()
     {
         $data = User::where([
-            ['role', 'sekolah']
+            ['is_school', 1]
          ])->get(); 
     
         // Define the Excel export data
@@ -92,9 +93,9 @@ class ExportController extends Controller
     
         foreach ($data as $data) {
             $exportData[] = [
-                'Nama Sekolah' => $data->instansi,
-                'Alamat' => $data->alamat,
-                'No PIC' => $data->kontak,
+                'Nama Sekolah' => $data->commissariat,
+                'Alamat' => $data->address,
+                'No PIC' => $data->phone,
             ];
         }
     
@@ -113,10 +114,10 @@ class ExportController extends Controller
     
         foreach ($data as $data) {
             $exportData[] = [
-                'Nama Sekolah' => $data->user->instansi,
-                'Judul Buku' => $data->book->judul,
-                'No Buku' => $data->book->no_buku,
-                'No Punggung Buku' => $data->book->npb,
+                'Nama Sekolah' => $data->user->commissariat,
+                'Judul Buku' => $data->book->title,
+                'No Buku' => $data->book->booknum,
+                'No Punggung Buku' => $data->book->backnum,
                 'Tanggal Pinjam' => Carbon::parse($data->tgl_pinjam)->format('d M Y'),
                 'Tanggal Kembali' => Carbon::parse($data->tgl_kembali)->format('d M Y'),
             ];
@@ -137,10 +138,10 @@ class ExportController extends Controller
     
         foreach ($data as $data) {
             $exportData[] = [
-                'Nama Sekolah' => $data->user->instansi,
-                'Judul Buku' => $data->book->judul,
-                'No Buku' => $data->book->no_buku,
-                'No Punggung Buku' => $data->book->npb,
+                'Nama Sekolah' => $data->user->commisariat,
+                'Judul Buku' => $data->book->title,
+                'No Buku' => $data->book->booknum,
+                'No Punggung Buku' => $data->book->backnum,
                 'Tanggal Pinjam' => Carbon::parse($data->tgl_pinjam)->format('d M Y'),
                 'Tanggal Kembali' => Carbon::parse($data->tgl_kembali)->format('d M Y'),
             ];
@@ -159,11 +160,11 @@ class ExportController extends Controller
     
         foreach ($data as $data) {
             $exportData[] = [
-                'Judul Buku' => $data->judul,
-                'Penulis' => $data->penulis,
-                'Kategori' => $data->book_category->kelas,
-                'No Buku' => $data->no_buku,
-                'No Punggung Buku' => $data->npb,
+                'Judul Buku' => $data->title,
+                'Penulis' => $data->author,
+                'Kategori' => $data->category->name,
+                'No Buku' => $data->booknum,
+                'No Punggung Buku' => $data->backnum,
                
             ];
         }
@@ -174,14 +175,14 @@ class ExportController extends Controller
 
     public function book_categoryexcel()
     {
-        $data = Book_category::all(); 
+        $data = Category::all(); 
     
         // Define the Excel export data
         $exportData = [];
     
         foreach ($data as $data) {
             $exportData[] = [
-                'Kelas' => $data->kelas,
+                'Kelas' => $data->name,
 
             ];
         }

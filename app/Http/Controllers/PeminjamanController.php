@@ -88,7 +88,7 @@ class PeminjamanController extends Controller
             if ($request['book_id_'.$i]) {
                         Peminjaman::create(${'validatedData'.$i});
                         Book::where('id', $request['book_id_'.$i])
-                        ->update(['stok' => 0]);
+                        ->update(['stock' => 0]);
             }
         }
         

@@ -34,8 +34,8 @@
         @enderror aria-label="Default select example" id="book_id" name="book_id_{{ $i }}">
           <option disabled selected value> -- pilih judul buku -- </option>
           @foreach ($books as $book)
-          @if ($book->stok > 0)
-          <option value="{{ $book->id }}">{{ $book->judul }} - {{ $book->npb }}</option>
+          @if ($book->stock > 0)
+          <option value="{{ $book->id }}">{{ $book->title }} - {{ $book->backnum }}</option>
           @endif
           @endforeach
         </select>

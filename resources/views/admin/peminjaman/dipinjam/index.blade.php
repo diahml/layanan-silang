@@ -36,8 +36,8 @@
       @foreach ($peminjaman as $peminjaman)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $peminjaman->user->instansi }}</td>
-        <td>0{{ $peminjaman->user->kontak }}</td>
+        <td>{{ $peminjaman->user->commissariat }}</td>
+        <td>0{{ $peminjaman->user->phone }}</td>
         <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
         <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td>
         <td>
