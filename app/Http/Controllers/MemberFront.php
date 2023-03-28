@@ -38,7 +38,7 @@ class MemberFront extends Controller
     {
         $book = Book::select('*')->where('id', $id_book)->get();
         return view(
-            'member.catalogue.shows',
+            'member.catalogue.show',
             [
                 'title' => 'show',
                 'active' => 'data-book',
