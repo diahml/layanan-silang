@@ -5,33 +5,32 @@
     <div class="card-body">
       <h5 class="card-title">Create New Post</h5>
 
-<form method="post" action="/admin/kegiatan" enctype="multipart/form-data">
+<form method="post" action="/admin/post" enctype="multipart/form-data">
     @csrf
       <!-- Floating Labels Form -->
       <form class="row g-3">
 
         <div class="col-10 mt-3">
-          <label for="title" class="form-label">Judul</label>
-          <input type="text" class="form-control @error('title') is-invalid"
-              
-          @enderror id="title" name="title" placeholder="Judul" value="{{ old('title') }}">
-          @error('title')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+          <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus value="{{ old('title') }}">
+                  @error('title')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
         </div>
+
         <div class="col-10 mt-3">
           <label for="slug" class="form-label">Slug</label>
-          <input type="text" class="form-control @error('slug') is-invalid" @enderror id="slug" name="slug" placeholder="Slug">
-          @error('slug')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+                  <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" readonly>
+                  @error('slug')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+        </div>
 
           {{-- slug otomatisnya gabisa lagi --}}
-        </div>
         <div class="col-10 mt-3">
           <label for="post_category_id" class="form-label">Kategori</label>
           <select class="form-select" id="post_category_id" name="post_category_id">
@@ -47,15 +46,17 @@
         </div>
 
         <div class="col-10 mt-3">
-          <label for="image" class="form-label">Post Image</label>
-          <img class="img-preview img-fluid" alt="">
-          <input type="file" class="form-control @error('image') is-invalid" @enderror id="image" name="image" onchange="previewImage()">
-          @error('image')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
-        </div>
+          <label for="image" class="col-sm-2 col-form-label">Post Image</label>
+                  <div class="col-sm-12">
+                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                    @error('image')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                    </div>
+                  </div>
 
         <div class="col-10 mt-3">
           <label for="body" class="form-label">Body</label>
@@ -74,45 +75,28 @@
 
     </div>
 
-<script>
-    const title = document.querySelector("#title");
-    const slug = document.querySelector("#slug");
+    <script>
+      const title = document.querySelector('#title');
+      const slug = document.querySelector('#slug')
 
-    title.addEventListener('change', function(){
-        fetch('/admin/kegiatan/checkSlug?title='+ title.value)
-        
+      title.addEventListener('change', function(){
+        fetch('/admin/post/checkSlug?title='+title.value)
         .then(response => response.json())
         .then(data => slug.value = data.slug)
-        console.log(title.value);
-        console.log(data.slug);
-    });
+      });
 
-    // const title = document.querySelector("#title");
-    // const slug = document.querySelector("#slug");
-
-    //     title.addEventListener("keyup", function() {
-    //         let preslug = title.value;
-    //         preslug = preslug.replace(/ /g,"-");
-    //         slug.value = preslug.toLowerCase();
-    //     });
-
-    document.addEventListener('trix-file-accept', function(e){
-      e.preventDefault();
-    });
-
-    function previewImage(){
-      const image = document.querySelector('#image');
-      const imgPreview = document.querySelector('.img-preview');
-
-      imgPreview.style.display = 'block';
-
-      const oFReader = new FileReader();
-      oFReader.readAsDataURL(image.files[0]);
-
-      oFReader.onload = function (oFREvent) {
-        imgPreview.src = oFREvent.target.result;
-      }
-    }
+      function previewImage(){
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+        imgPreview.style.display ='block';
     
-</script>
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+    
+        oFReader.onload = function(oFReader){
+          imgPreview.src = oFReader.target.result;
+        }
+      }
+      
+    </script>
 @endsection

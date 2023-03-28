@@ -47,14 +47,18 @@
           <td>{{ $book->category->name }}</td>
           <td>
             <a  class="badge bg-info" href="/admin/katalogue/{{$book->id}}"><i class="bi bi-eye-fill"></i></a>
-            <a href="/admin/buku/{{ $book->npb }}/edit"> 
-                <i class="bi bi-pencil-square text-warning"></i>
-            </a>
-            <form action="/admin/buku/{{ $book->npb }}" method="post" class="d-inline">
-              @method('delete')
-              @csrf
-              <button class="bi bi-trash text-danger border-0" onclick="return confirm('Apakah anda yakin untuk menghapus data?')"> </button>
-            </form>
+                <a href="/admin/katalogue/{{ $book->id }}/edit"> 
+                    <i class="bi bi-pencil-square text-warning"></i>
+                </a>
+                <form action="/admin/katalogue/{{ $book->id }}" method="post" class="d-inline">
+                  @method('delete')
+                  @csrf
+                  <button class="bi bi-trash text-danger border-0" onclick="return confirm('Apakah anda yakin untuk menghapus data?')"> </button>
+                </form>
+
+            {{-- <a  class="badge bg-info" href="/admin/katalogue/{{$book->id}}"><i class="bi bi-eye-fill"></i></a>
+            <a  class="badge bg-warning" href="/admin/katalogue/edit/{{$book->id}}"><i class="bi bi-pencil-square"></i></a>
+            <a  class="badge bg-danger" href="/admin/katalogue/destroy/{{ $book->id}}" onclick="return confirm('are you sure for delete?')"><i class="bi bi-trash-fill"></i></a> --}}
           </td>
         </tr>
 

@@ -13,7 +13,6 @@
             <div class="card-body">
               <!-- No Labels Form -->
               <h5 class="card-title">Update Book</h5>
-              @foreach($book as $book)
               <!-- Vertical Form -->
               <form method="POST" action="/admin/katalogue/{{ $book->id }}" class="row g-3" enctype="multipart/form-data">
                 @method('put')
@@ -27,15 +26,7 @@
                 </div>
                 @enderror
                 </div>
-                <div class="col-12">
-                  <label for="slug" class="form-label">Slug</label>
-                  <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug', $book->slug) }}" readonly>
-                  @error('slug')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-                @enderror
-                </div>
+                
 
                 <div class="col-12">
                   <label for="category_id" class="col-sm-2 col-form-label">Category</label>
@@ -109,22 +100,12 @@
                   <button type="submit" class="btn btn-primary">Update Book</button>
                 </div>
               </form><!-- Vertical Form -->
-              @endforeach
 
 
     </div>
 </div>
 <script>
-  const title = document.querySelector('#title');
-  const slug = document.querySelector('#slug')
-
-
-  title.addEventListener('change', function(){
-    fetch('/admin/katalogue/checkSlug?title='+title.value)
-    .then(response => response.json())
-    .then(data => slug.value = data.slug)
-  });
-
+  
   function previewImage(){
     const image = document.querySelector('#image');
     const imgPreview = document.querySelector('.img-preview');

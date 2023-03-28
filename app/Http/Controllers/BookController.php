@@ -68,7 +68,6 @@ class BookController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:books',
             'category_id' => 'required',
             'image' => 'image|file|max:10024',
             'author' => 'required',
@@ -139,7 +138,6 @@ class BookController extends Controller
             'image' => 'image|file|max:10024',
             'author' => 'required',
             'bookyear' => 'required',
-            'slug' => 'required|max:255',
             'booknum' => 'required|max:255',
             'backnum' => 'required|max:255',
         ];
@@ -166,23 +164,19 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id_book)
     {
 
-        $borrow = Borrow::select('*')->where([['book_id', $book->id], ['status', 'borrowed'] ])->get();
+        $borrow = Borrow::select('*')->where([['book_id', $id_book], ['status', 'borrowed'] ])->get();
 
         if ($borrow->count()) {
             return redirect('/admin/katalogue')->with('unsuccess', 'You Cannot Delete This One Because Someone Still Borrow This Book');
         } else{
-            Book::destroy($book->id);
+            Book::where('id', $id_book)->delete();
             return redirect('/admin/katalogue')->with('success', 'You Delete One Katalogue');
         }
         
     }
 
-    public function checkSlug(Request $request)
-    {
-        $slug = SlugService::createSlug(Book::class, 'slug', $request->title);
-        return response()->json(['slug' => $slug]);
-    }
+    
 }

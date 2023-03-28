@@ -52,7 +52,7 @@ class BorrowController extends Controller
             'title' => 'Add New borrower',
             'active' => 'list-borrow',
             'books' => Book::select('*')->where('stock', 1)->get(),
-            'members' => User::all()
+            'members' => User::select('*')->where('is_member', 1)->get(),
         ]);
     }
 
@@ -192,6 +192,6 @@ class BorrowController extends Controller
             Book::where('id', $idbook->book_id)
                 ->update(['stock' => 1]);
         Borrow::where('id', $id_borrow)->delete();
-        return redirect('/admin/borrow')->with('success', 'You Delete One Member');
+        return redirect('/admin/borrow')->with('success', 'You Delete One Borrower');
     }
 }

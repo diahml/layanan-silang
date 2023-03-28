@@ -23,9 +23,9 @@
         <li class="nav-item {{ ($active==="kegiatan" ? 'active' :'') }}"><a class="nav-link" href="/blog">Blog</a></li>
         <li class="nav-item {{ ($active==="presence" ? 'active' :'') }}"><a class="nav-link" href="/presence">Presence</a></li>        
         @endauth
-        @auth
+        @can('school')
         <li class="nav-item {{ ($active==="peminjaman" ? 'active' :'') }}"><a class="nav-link" href="/peminjaman">Peminjaman Buku</a></li>
-        @endauth
+        @endcan
       </ul>
 
       
@@ -38,6 +38,14 @@
             Welcome {{ auth()->user()->name }}
           </a>
           <ul class="dropdown-menu">
+            @can('admin')
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/dashboard">
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <hr class="dropdown-divider">
+            @endcan
             <li>
             <form action="/logout" method="POST">
               @csrf

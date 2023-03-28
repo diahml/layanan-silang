@@ -59,6 +59,7 @@
                   <div class="col-lg-3 col-md-4 label">Position</div>
                   <div class="col-lg-9 col-md-8">{{ $s->commissariat }}</div>
                 </div>
+                @elseif($s->is_school==1)
                 @else
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Commissariat</div>

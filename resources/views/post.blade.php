@@ -10,12 +10,11 @@
             <p>Category : <a href="/post_categories/{{ $post->post_category->slug }}"> {{$post->post_category->name }} </a></p>
 
             @if ($post->image)
-            <div style="max-height: 400px; overflow:hidden;">
-                <img src="{{ asset('storage/'.$post->image) }}" alt="$post->post_category->name">
-            </div>
-                
+            <div style="overflow:hidden; object-fit: cover;">
+                <img class="mt-3" src="{{ asset('storage/'.$post->image) }}" alt="$post->post_category->name" class="img-fluid mt-3" style="width:800px; height: 400px; ">
+            </div>            
             @else
-            <img src="https://source.unsplash.com/700x300/?{{ $post->post_category->name }}" alt="$post->post_category->name" class="img-fluid"> 
+            <img class="mt-3" src="https://source.unsplash.com/700x300" alt="$post->post_category->name" class="img-fluid"> 
             @endif
             <article class="my-3">
                 {!!  $post->body!!}

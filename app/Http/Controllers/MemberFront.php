@@ -33,4 +33,17 @@ class MemberFront extends Controller
             ]
         );
     }
+
+    public function shows($id_book)
+    {
+        $book = Book::select('*')->where('id', $id_book)->get();
+        return view(
+            'member.catalogue.shows',
+            [
+                'title' => 'show',
+                'active' => 'data-book',
+                'book' => $book
+            ]
+        );
+    }
 }

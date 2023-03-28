@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Book_category;
 use App\Models\User;
+use App\Models\Borrow;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,6 +19,7 @@ class AdminBookController extends Controller
     public function index()
     {
         return view ('admin.book.index',[
+            'title' => 'Data Book',
             "active"=>"admin/buku",
             "books"=>Book::latest()->paginate(20),
         ]);
@@ -32,8 +34,9 @@ class AdminBookController extends Controller
     public function create()
     {
         return view('admin.book.create',[
+            'title' => 'Add Book',
             "active"=>'admin/buku',
-            "book_categories"=>Book_category::all(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -46,23 +49,21 @@ class AdminBookController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'judul'=>'required|max:255',
-            'book_category_id'=> 'required',
-            'pengarang'=>'required',
-            'cover'=>'image',
-            'npb'=>'required|unique:books',
-            'no_buku'=>'required',
-            'stok'=>'required',
-            'tahun_terbit'=>'required'
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'image' => 'image|file|max:10024',
+            'author' => 'required',
+            'booknum' => 'required|unique:books',
+            'backnum' => 'required|unique:books',
+            'bookyear' => 'required'
          ]);
 
-         if($request->file('cover')){
-            $validatedData['cover']=$request->file('cover')->store('cover-buku');
+         if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
-         Book::create($validatedData);
- 
-         return redirect('/admin/buku/');
+        Book::create($validatedData);
+        return redirect('/admin/buku')->with('success', 'You Create A New Book!');
     }
 
     /**
@@ -71,9 +72,17 @@ class AdminBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_book)
     {
-        //
+        $book = Book::select('*')->where('id', $id_book)->get();
+        return view(
+            'admin.katalogue.show',
+            [
+                'title' => 'show',
+                'active' => 'data-book',
+                'book' => $book
+            ]
+        );
     }
 
     /**
@@ -85,8 +94,9 @@ class AdminBookController extends Controller
     public function edit(Book $buku)
     {
         return view('admin.book.edit',[
+            'title' => 'Edit',
             "active"=>"admin/buku",
-            "book_categories"=>Book_category::all(),
+            "categories"=>Category::all(),
             "book"=>$buku,
         ]);
     }
@@ -101,31 +111,30 @@ class AdminBookController extends Controller
     public function update(Request $request, Book $buku)
     {
         $rules = [
-            'judul'=>'required',
-            'pengarang'=>'required',
-            'book_category_id'=>'required',
-            'tahun_terbit'=>'required',
-            'no_buku'=>'required',
-            'stok'=>'required',
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'image' => 'image|file|max:10024',
+            'author' => 'required',
+            'bookyear' => 'required',
+            'booknum' => 'required|max:255',
+            'backnum' => 'required|max:255',
          ];
 
-         if($request->npb != $buku->npb){
-            $rules['npb']='required|unique:books';
-         }
+         
 
          $validatedData=$request->validate($rules);
 
-         if($request->file('cover')){
-            if($request->oldImage){
+         if ($request->file('image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['cover']=$request->file('cover')->store('cover-buku');
+            $validatedData['image'] = $request->file('image')->store('cover-buku');
         }
 
         Book::where('id', $buku->id)
             ->update($validatedData);
 
-        return redirect('/admin/buku/');
+        return redirect('/admin/buku')->with('success', 'One Book Has Been Updated');
     }
 
     /**
@@ -136,7 +145,15 @@ class AdminBookController extends Controller
      */
     public function destroy(Book $buku)
     {
-        Book::destroy($buku->id);
+
+        $borrow = Borrow::select('*')->where([['book_id', $buku->id], ['status', 'borrowed'] ])->get();
+
+        if ($borrow->count()) {
+            return redirect('/admin/buku')->with('unsuccess', 'You Cannot Delete This One Because Someone Still Borrow This Book');
+        } else{
+            Book::destroy($buku->id);
+            return redirect('/admin/buku')->with('success', 'You Delete One Katalogue');
+        }
 
         return redirect('/admin/buku');
     }

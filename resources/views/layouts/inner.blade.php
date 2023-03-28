@@ -109,8 +109,14 @@
                 <span>My Profile</span>
               </a>
             </li>
+            <hr class="dropdown-divider">
             <li>
-              <hr class="dropdown-divider">
+              <a class="dropdown-item d-flex align-items-center" href="/">
+                <i class="bi bi-globe2"></i>
+                <span>Profile Site</span>
+              </a>
+            </li>
+            <li>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -246,7 +252,7 @@
         </a>
         <ul id="katalogue-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/admin/katalogue">
+            <a href="/admin/buku">
               <i class="bi bi-circle"></i><span>List of Books</span>
             </a>
           </li>
@@ -262,7 +268,7 @@
             </a>
           </li>
           <li>
-            <a href="/admin/katalogue/create" >
+            <a href="/admin/buku/create" >
               <i class="bi bi-circle"></i><span>Input New Book</span>
             </a>
           </li>
@@ -285,12 +291,12 @@
         </a>
         <ul id="post-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/admin/kegiatan">
+            <a href="/admin/post">
               <i class="bi bi-circle"></i><span>List of Post</span>
             </a>
           </li>
           <li>
-            <a href="/admin/kegiatan/kategori">
+            <a href="/admin/post/kategori">
               <i class="bi bi-circle"></i><span>List of Post Categories</span>
             </a>
           </li>

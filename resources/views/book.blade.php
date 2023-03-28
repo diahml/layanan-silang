@@ -3,13 +3,13 @@
 
 @section('container')
  
-<div class="pagetitle border-bottom mt-3 mb-3">
+{{-- <div class="pagetitle border-bottom mt-3 mb-3">
   <h2> <a href="/katalog-buku"  style="color:black; text-decoration:none">Katalog Buku</a> </h2>
-</div>
+</div> --}}
 
 
 @if ($books->count())
-<div class="row justify-content-center mb-2">
+<div class="row justify-content-center pt-5">
     <div class="col-md-6">
         <form action="/katalog-buku">
             <div class="input-group mb-3">
@@ -35,8 +35,8 @@
     @foreach ($books as $book)
     <div class="col-sm-6 col-md-6-flex align-items-stretch portfolio-item {{ $book->category->name }}">
           <div class="member-img" >
-            @if ($book->cover)
-            <img src="{{ asset('storage/'.$book->cover) }}" alt="$book->book_category->kelas" style="width: 290px; height:360px; display:block;margin-left:auto; margin-right :auto">
+            @if ($book->image)
+            <img src="{{ asset('storage/'.$book->image) }}" alt="$book->book_category->kelas" style="width: 290px; height:360px; display:block;margin-left:auto; margin-right :auto">
         @else
         <img src="https://source.unsplash.com/1200x400/science" class="img-fluid" alt="">
         @endif 
@@ -64,7 +64,7 @@
                     <tr>
                         <td>Kategori</td>
                         <td>
-                            <a href="/katalog-buku/{{ $book->category->name }}">{{ $book->category->name }}</a>
+                           {{ $book->category->name }}
                         </td>
                     </tr>
                     <tr>

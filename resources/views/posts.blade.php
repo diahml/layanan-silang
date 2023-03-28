@@ -8,10 +8,9 @@
 @if ($posts->count())
     <div class="card mb-3">
         @if ($posts[0]->image)
-        <div style="max-height: 400px; overflow:hidden;">
-            <img src="{{ asset('storage/'.$posts[0]->image) }}" alt=$posts[0]->post_category->name">
-        </div>
-            
+            <div style="overflow:hidden; object-fit: cover;">
+                <img class="mt-3" src="{{ asset('storage/'.$posts[0]->image) }}" alt="$post->post_category->name" class="img-fluid mt-3" style="width:1300px; height: 460px; ">
+            </div>            
         @else
         <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->post_category->name }}" class="card-img-top" alt="{{ $posts[0]->post_category->name }}">
         @endif

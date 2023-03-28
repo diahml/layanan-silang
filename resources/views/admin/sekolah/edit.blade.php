@@ -24,9 +24,9 @@
         </div> --}}
 
         <div class="col-10 mt-3">
-          <label for="instansi" class="form-label">Nama Sekolah</label>
-          <input type="text" class="form-control @error('instansi') is-invalid" @enderror id="instansi" name="instansi" placeholder="Nama Sekolah" value="{{ old('instansi', $sekolah->instansi) }}">
-          @error('instansi')
+          <label for="name" class="form-label">Nama Sekolah</label>
+          <input type="text" class="form-control @error('name') is-invalid" @enderror id="name" name="name" placeholder="Nama Sekolah" value="{{ old('name', $sekolah->name) }}">
+          @error('name')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
@@ -35,9 +35,9 @@
         </div>
 
         <div class="col-10 mt-3">
-            <label for="alamat" class="form-label">Alamat Sekolah</label>
-            <input type="text" class="form-control @error('alamat') is-invalid" @enderror id="alamat" name="alamat" placeholder="Alamat Sekolah" value="{{ old('alamat', $sekolah->alamat) }}">
-            @error('alamat')
+            <label for="address" class="form-label">Alamat Sekolah</label>
+            <input type="text" class="form-control @error('address') is-invalid" @enderror id="address" name="address" placeholder="Alamat Sekolah" value="{{ old('address', $sekolah->address) }}">
+            @error('address')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
@@ -46,11 +46,13 @@
         </div>
 
         <div class="col-10 mt-3">
-            <label for="kontak" class="form-label">No Telepon</label>
-            <input type="kontak" class="form-control @error('kontak') is-invalid"
+            <label for="phone" class="form-label">No Telepon</label>
+            <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">+62</span>
+            <input type="phone" class="form-control @error('phone') is-invalid"
                 
-            @enderror id="kontak" name="kontak" placeholder="No Telepon" value="{{ old('kontak', $sekolah->kontak) }}">
-            @error('kontak')
+            @enderror id="phone" name="phone" placeholder="No Telepon" value="{{ old('phone', $sekolah->phone) }}">
+            @error('phone')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
@@ -61,17 +63,6 @@
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control @error('email') is-invalid" @enderror id="email" name="email" placeholder="Email" value="{{ old('email', $sekolah->email) }}">
             @error('email')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-  
-        </div>
-
-        <div class="col-10 mt-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control @error('username') is-invalid" @enderror id="username" name="username" placeholder="Username" value="{{ old('username', $sekolah->username) }}">
-            @error('username')
             <div class="invalid-feedback">
               {{ $message }}
             </div>

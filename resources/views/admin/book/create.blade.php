@@ -1,121 +1,121 @@
-@extends('admin.layout.main')
+@extends('layouts.inner')
+@section('containers')
+@if(session()->has('success'))
+  <div class="alert alert-success " role="alert">
+        {{ session('success') }}
+  </div>
+@endif
+        <nav>
+          <h1>Add New Book</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Add Book</a></li>
+              <li class="breadcrumb-item active">Page</li>
+            </ol>
+          </nav>
+          <div class="card">
+            <div class="card-body">
+              <!-- No Labels Form -->
+              <h5 class="card-title">Add New Book</h5>
 
-@section('container')
-
-
-
-<div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Input Data Buku Baru</h5>
-
-<form method="post" action="/admin/buku" enctype="multipart/form-data">
-    @csrf
-      <!-- Floating Labels Form -->
-      <form class="row g-3">
-
-        <div class="col-10 mt-3">
-          <label for="judul" class="form-label">Judul</label>
-          <input type="text" class="form-control @error('judul') is-invalid"
-              
-          @enderror id="judul" name="judul" placeholder="Judul" value="{{ old('judul') }}">
-          @error('judul')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
-        </div>
-
-        <div class="col-10 mt-3">
-          <label for="pengarang" class="form-label">Penulis</label>
-          <input type="text" class="form-control @error('pengarang') is-invalid" @enderror id="pengarang" name="pengarang" placeholder="Penulis" value="{{ old('pengarang') }}">
-          @error('pengarang')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
-
-        </div>
-
-        <div class="col-10 mt-3">
-          <label for="cover" class="form-label">Cover Buku (JPEG, PNG, JPG)</label>
-          <input type="file" class="form-control @error('cover') is-invalid" @enderror id="cover" name="cover">
-          @error('cover')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
-        </div>
-
-    
-    <div class="col-10 mt-3">
-      <label for="book_category_id" class="form-label">Kategori</label>
-      <select class="form-select" id="book_category_id" name="book_category_id">
-        @foreach ($book_categories as $book_category)
-        @if (old('book_category_id')==$book_category->id)
-        <option value="{{ $book_category->id }}" selected>{{ $book_category->kelas }}</option>
-        @else
-        <option value="{{ $book_category->id }}">{{ $book_category->kelas }}</option>
-        @endif
-            
-        @endforeach
-      </select>
-    </div>
-
-        <div class="col-10 mt-3">
-            <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
-            <input type="tahun_terbit" class="form-control @error('tahun_terbit') is-invalid"
+              <!-- Vertical Form -->
+              <form method="POST" action="/admin/katalogue" class="row g-3" enctype="multipart/form-data">
+                @csrf
+                <div class="col-12">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus value="{{ old('title') }}">
+                  @error('title')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+                </div>
                 
-            @enderror id="tahun_terbit" name="tahun_terbit" placeholder="Tahun Terbit" value="{{ old('tahun_terbit') }}">
-            @error('tahun_terbit')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
-        
-          <div class="col-10 mt-3">
-            <label for="npb" class="form-label">Nomor Punggung Buku</label>
-            <input type="text" class="form-control @error('npb') is-invalid"
-                
-            @enderror id="npb" name="npb" placeholder="Nomor Punggung Buku" value="{{ old('npb') }}">
-            @error('npb')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
-        
 
-          <div class="col-10 mt-3">
-            <label for="no_buku" class="form-label">Nomor Buku</label>
-            <input type="text" class="form-control @error('no_buku') is-invalid"
-                
-            @enderror id="no_buku" name="no_buku" placeholder="Nomor Buku" value="{{ old('no_buku') }}">
-            @error('no_buku')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
+                <div class="col-12">
+                  <label for="category_id" class="col-sm-2 col-form-label">Category</label>
+                    <select class="form-select" name="category_id" id="category_id" >
+                      @foreach($categories as $category)
+                      @if(old('category_id') == $category->id)
+                      <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                      @else
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      @endif
+                      @endforeach
+                    </select>
+                </div>
 
-          <div class="col-10 mt-3">
-            <label for="stok" class="form-label">Stok</label>
-            <input type="text" class="form-control @error('stok') is-invalid"
-                
-            @enderror id="stok" name="stok" placeholder="Stok" value="{{ old('stok') }}">
-            @error('stok')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
-            @enderror
-          </div>
+                <div class="col-12">
+                  <label for="image" class="col-sm-2 col-form-label">Post Image</label>
+                  <div class="col-sm-12">
+                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                    @error('image')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                    </div>
+                  </div>
 
-        <div class="mt-3">
-          <button type="submit" class="btn btn-primary">Input Data</button>
-        </div>
-      </form><!-- End floating Labels Form -->
-    </div>
+                <div class="col-12">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" value="{{ old('author') }}">
+                    @error('author')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+                </div>
+                <div class="col-12">
+                    <label for="booknum" class="form-label">Book Number</label>
+                    <input type="text" class="form-control @error('booknum') is-invalid @enderror" id="booknum" name="booknum" value="{{ old('booknum') }}">
+                    @error('booknum')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+                </div>
+                <div class="col-12">
+                    <label for="backnum" class="form-label">Back Number</label>
+                    <input type="text" class="form-control @error('backnum') is-invalid @enderror" id="backnum" name="backnum" value="{{ old('backnum') }}">
+                    @error('backnum')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+                </div>
+                <div class="col-12">
+                    <label for="bookyear" class="form-label">Book Year</label>
+                    <input type="text" class="form-control @error('bookyear') is-invalid @enderror" id="bookyear" name="bookyear" value="{{ old('bookyear') }}">
+                    @error('bookyear')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Add Book</button>
+                </div>
+              </form><!-- Vertical Form -->
+
 
     </div>
+</div>
+<script>
+  
 
+  function previewImage(){
+    const image = document.querySelector('#image');
+    const imgPreview = document.querySelector('.img-preview');
+    imgPreview.style.display ='block';
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function(oFReader){
+      imgPreview.src = oFReader.target.result;
+    }
+  }
+  
+</script>
 @endsection

@@ -145,11 +145,11 @@ Route::get('/peminjaman/peraturan', [PeminjamanController::class, 'peraturan'])-
 Route::resource('/peminjaman', PeminjamanController::class)->middleware('school');
 
 
-Route::get('/admin/kegiatan/checkSlug',[AdminPostController::class,'checkSlug'])->middleware('admin');
+Route::get('/admin/post/checkSlug',[AdminPostController::class,'checkSlug'])->middleware('admin');
 
-Route::resource('/admin/kegiatan/kategori', AdminPostCategoryController::class)->middleware('admin');
+Route::resource('/admin/post/kategori', AdminPostCategoryController::class)->middleware('admin');
 
-Route::resource('/admin/kegiatan', AdminPostController::class)->middleware('admin');
+Route::resource('/admin/post', AdminPostController::class)->middleware('admin');
 
 
 
@@ -200,13 +200,10 @@ Route::get('/admin/katalogue/hapusreview/{id_review}', [ReviewController::class,
 
 
 
-// katalogue
-Route::get('/admin/katalogue/checkSlug', [BookController::class, 'checkSlug'])->middleware('admin');
-Route::get('/admin/katalogue/pdfcatalogue', [BookController::class, 'pdfcatalogue'])->middleware('admin');
-Route::resource('/admin/katalogue', BookController::class)->middleware('admin');
-Route::get('/admin/katalogue/show/{id_book}', [BookController::class, 'show'])->middleware('auth');
-Route::get('/admin/katalogue/edit/{id_book}', [BookController::class, 'edit'])->middleware('admin');
-Route::get('/admin/katalogue/destroy/{book:slug}', [BookController::class, 'destroy'])->middleware('admin');
+// // katalogue
+// Route::get('/admin/katalogue/checkSlug', [BookController::class, 'checkSlug'])->middleware('admin');
+// Route::get('/admin/katalogue/edit/{id_book}', [BookController::class, 'edit'])->middleware('admin');
+// Route::get('/admin/katalogue/destroy/{id_book}', [BookController::class, 'destroy'])->middleware('admin');
 
 // membering
 Route::get('/admin/membering/pdfmember', [MemberController::class, 'pdfmember'])->middleware('admin');
@@ -241,6 +238,7 @@ Route::get('/admin/suggest/approve/{id_suggest}', [SuggestController::class, 'ap
 
 // member interface
 Route::get('/member/frontpage', [MemberFront::class, 'index'])->middleware('member');
+Route::get('/member/catalogue/shows/{id_book}', [MemberFront::class, 'shows'])->middleware('member');
 Route::get('/member/frontpage/show/{id_member}', [MemberController::class, 'show'])->middleware('member');
 Route::get('/member/historyborrow', [BorrowController::class, 'history'])->middleware('member');
 Route::resource('/member/suggest', SuggestController::class)->middleware('member');

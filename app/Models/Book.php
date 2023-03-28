@@ -9,7 +9,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Book extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
 
     protected $guarded=['id'];
 
@@ -37,24 +37,17 @@ class Book extends Model
         return $this->hasOne(PeminjamanApproved::class);
     }
 
-    public function getRouteKeyName()
-    {
-    return 'npb';
-    }
+    // public function getRouteKeyName()
+    // {
+    // return 'id';
+    // }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
+    
     public function borrow(){
         return $this->hasMany(Borrow::class);
     }

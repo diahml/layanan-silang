@@ -33,9 +33,11 @@
                   <td>{{ $member->commissariat }}</td>
                   <td>{{ $member->phone }}</td>
                   <td>
-                    @if($member->is_admin==0) 
+                    @if($member->is_member==1) 
                     GenBI
-                    @else 
+                    @elseif($member->is_school==1) 
+                    School                  
+                    @else
                     Librarian
                     @endif
                   </td>

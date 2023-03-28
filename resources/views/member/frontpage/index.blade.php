@@ -81,12 +81,12 @@
 
          <div class="col-5 col-md-2 card m-3">
           <div class="position-absolute bg-dark px-3 py-2" style="background-color: rgba(0,0,0,0.3)"><a class="text-white text-decoration-none">{{ $book->category->name }}</a></div>
-            @if($book->cover)
+            @if($book->image)
             <img src="{{ asset('storage/'. $book->image) }}" alt="{{ $book->category->name }}" class="img-fluid" style="width: 20rem; height: 16rem;">
             @else
             <img src="https://picsum.photos/500/500" class="card-img-top" alt="{{ $book->category->name }}">
             @endif
-            <a  href="/admin/katalogue/show/{{$book->id}}">
+            <a  href="/member/catalogue/shows/{{$book->id}}">
             <div class="card-body">
             <h5 class="card-title">{{ $book->title }}</h5>
               @if($book->stock >= 1)

@@ -15,10 +15,10 @@ class AdminSekolahController extends Controller
      */
     public function index()
     {
-        return view ('admin.sekolah.index',[
-            "title"=>"School",
-            "active"=>"admin/sekolah",
-            "sekolah"=>User::select('*')->where('is_school', 1)->get(),
+        return view('admin.sekolah.index', [
+            "title" => "School",
+            "active" => "admin/sekolah",
+            "sekolah" => User::select('*')->where('is_school', 1)->get(),
         ]);
     }
 
@@ -29,9 +29,9 @@ class AdminSekolahController extends Controller
      */
     public function create()
     {
-        return view('admin.sekolah.create',[
-            "title"=>"School",
-            "active"=>'admin/sekolah',
+        return view('admin.sekolah.create', [
+            "title" => "School",
+            "active" => 'admin/sekolah',
         ]);
     }
 
@@ -43,7 +43,7 @@ class AdminSekolahController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //  $rules1['username']=$request['username'];
         //  $rules1['email']=$request['email'];
         //  $rules1['instansi']= $request['nama_sekolah'];
@@ -53,26 +53,28 @@ class AdminSekolahController extends Controller
         //  User::create($rules1);
 
         //  $id = User::select('*')->where('username', $request['username'])->get();
-         
+
         //  $user_id = User::table('users')
         //  ->select('id')
         //  ->where('username'== $request['username'])
         //  ->get();
 
-         $validatedData = $request->validate([
-            'instansi'=>'required',
-            'alamat'=>'required',
-            'kontak'=>'required',
-            'email'=>'required',
-            'username'=>'required'
-         ]);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'phone' => 'required'
+        ]);
 
-         $validatedData['password']=bcrypt($request['password']);
-         $validatedData['role']='sekolah';
+        $validatedData['password'] = bcrypt($request['password']);
+        $validatedData['commissariat'] = $validatedData['name'];
+        $validatedData['is_admin'] = false;
+        $validatedData['is_member'] = false;
+        $validatedData['is_school'] = true;
 
-         User::create($validatedData);
- 
-         return redirect('/admin/sekolah');
+        User::create($validatedData);
+
+        return redirect('/admin/sekolah')->with('success', 'Success Add New Member!');
     }
 
     /**
@@ -94,10 +96,10 @@ class AdminSekolahController extends Controller
      */
     public function edit(User $sekolah)
     {
-        return view('admin.sekolah.edit',[
-            "title"=>"School",
-            "active"=>"admin/sekolah",
-            "sekolah"=>$sekolah,
+        return view('admin.sekolah.edit', [
+            "title" => "School",
+            "active" => "admin/sekolah",
+            "sekolah" => $sekolah,
         ]);
     }
 
@@ -111,22 +113,22 @@ class AdminSekolahController extends Controller
     public function update(Request $request, User $sekolah)
     {
         $rules = [
-            'instansi'=>'required',
-            'alamat'=>'required',
-            'kontak'=>'required',
-            'email'=>'required',
-         ];
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'phone' => 'required'
+        ];
 
-         if($request->username != $sekolah->username){
-            $rules['username']='required|unique:users';
-         }
+        $rules['commissariat'] = $request['name'];
 
-         $validatedData=$request->validate($rules);
-
+        $validatedData = $request->validate($rules);
+        if ($request['password']) {
+            $validatedData['password'] = bcrypt($request['password']);
+        }
         User::where('id', $sekolah->id)
             ->update($validatedData);
 
-        return redirect('/admin/sekolah/');
+        return redirect('/admin/sekolah/')->with('success', "Success Edit School's Data !");
     }
 
     /**

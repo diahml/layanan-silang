@@ -58,7 +58,7 @@ class SuggestController extends Controller
     public function approve($id_suggest)
     {
         Suggest::where('id', $id_suggest)->delete();
-        return redirect('/admin/katalogue/create')->with('success', 'Please input this book to the catalogue');
+        return redirect('/admin/buku/create')->with('success', 'Please input this book to the catalogue');
     }
 
 

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-     protected $guarded = ['id', 'is_admin'];
+    protected $guarded = ['id', 'is_admin'];
 
     // protected $fillable=['username','email', 'instansi', 'password', 'role'];
 
@@ -41,14 +41,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function sekolah(){
-        return $this->hasOne(Sekolah::class);
-    }
 
-    public function peminjaman(){
+    public function peminjaman()
+    {
         return $this->hasOne(Peminjaman::class);
     }
-    public function peminjamanApproved(){
+    public function peminjamanApproved()
+    {
         return $this->hasOne(PeminjamanApproved::class);
     }
 
