@@ -46,6 +46,14 @@
             </li>
             <hr class="dropdown-divider">
             @endcan
+            @can('member')
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/member/frontpage">
+                <span>FrontPage</span>
+              </a>
+            </li>
+            <hr class="dropdown-divider">
+            @endcan
             <li>
             <form action="/logout" method="POST">
               @csrf
