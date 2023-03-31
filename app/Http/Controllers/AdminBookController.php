@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\User;
 use App\Models\Borrow;
 use App\Models\Category;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -147,8 +148,8 @@ class AdminBookController extends Controller
     {
 
         $borrow = Borrow::select('*')->where([['book_id', $buku->id], ['status', 'borrowed'] ])->get();
-
-        if ($borrow->count()) {
+        $borrow2 = Peminjaman::select('*')->where([['book_id', $buku->id], ['status', 'dipinjam'] ])->get();
+        if ($borrow->count() || $borrow2->count() ) {
             return redirect('/admin/buku')->with('unsuccess', 'You Cannot Delete This One Because Someone Still Borrow This Book');
         } else{
             Book::destroy($buku->id);

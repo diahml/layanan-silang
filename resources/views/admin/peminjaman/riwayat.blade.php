@@ -38,9 +38,15 @@
                     <tr>
                       <th scope="row">{{ $loop->iteration}}</th>
                       <td>{{ $peminjaman->user->name }}</td>
+                      @if(!isset($peminjaman->book->id))
+                      <td>Buku Telah dihapus</td>
+                      <td>tidak terdeteksi</td>
+                      <td>tidak terdeteksi</td>
+                      @else
                       <td>{{ $peminjaman->book->title }}</td>
                       <td>{{ $peminjaman->book->booknum }}</td>
                       <td>{{ $peminjaman->book->backnum }}</td>
+                      @endif
                       <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
                       <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td>
                     </tr>

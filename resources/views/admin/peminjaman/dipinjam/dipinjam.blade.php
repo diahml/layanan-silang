@@ -24,7 +24,11 @@
             @foreach ($peminjaman as $peminjaman)
             <tr>
               <th scope="row">{{ $loop->iteration }}</th>
+              @if(!isset($peminjaman->book->id))
+              <td>book has been deleted</td>
+              @else
               <td>{{ $peminjaman->book->title }}</td>
+              @endif
               <td>{{ $peminjaman->book->booknum }}</td>
               <td>{{ $peminjaman->book->backnum }}</td>
               <td>

@@ -175,6 +175,11 @@
             </a>
           </li>
           <li>
+            <a href="/admin/peminjaman/riwayat">
+              <i class="bi bi-circle"></i><span>List of History Borrower School</span>
+            </a>
+          </li>
+          <li>
             <a href="/admin/borrow/create">
               <i class="bi bi-circle"></i><span>Form Request Borrow</span>
             </a>
