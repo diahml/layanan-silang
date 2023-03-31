@@ -44,8 +44,11 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <div class="form-floating">
-                      <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="your phone number">
-                      <label for="phone">Phone</label>
+                      <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+62</span>
+                        <input type="phone" class="form-control @error('phone') is-invalid"  
+                        @enderror id="phone" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                      </div>
                       @error('phone')
                       <div class="invalid-feedback">{{ $message }}</div>
                       @enderror

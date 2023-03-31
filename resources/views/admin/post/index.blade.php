@@ -12,7 +12,7 @@
   
 
       <!-- Default Table -->
-      <table class="table">
+      <table class="table table-borderless datatable">
         <a href="/admin/post/create" class="btn btn-primary mb-3">Create New Post</a>
         <thead>
           <tr>

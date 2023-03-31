@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">Input New Post Category</h5>
 
-<form method="post" action="/admin/kegiatan/kategori">
+<form method="post" action="/admin/post/kategori">
     @csrf
       <!-- Floating Labels Form -->
       <form class="row g-3">

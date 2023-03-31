@@ -138,7 +138,7 @@ class ExportController extends Controller
     
         foreach ($data as $data) {
             $exportData[] = [
-                'Nama Sekolah' => $data->user->commisariat,
+                'Nama Sekolah' => $data->user->name,
                 'Judul Buku' => $data->book->title,
                 'No Buku' => $data->book->booknum,
                 'No Punggung Buku' => $data->book->backnum,

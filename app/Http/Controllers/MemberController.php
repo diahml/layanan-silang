@@ -96,7 +96,7 @@ class MemberController extends Controller
             'commissariat' => 'required',
             'phone' => 'required'
         ]);
-        $validatedData['password'] = bcrypt($validatedData['phone']);
+        $validatedData['password'] = bcrypt('62'.$validatedData['phone']);
         $validatedData['is_admin'] = false;
 
         User::create($validatedData);

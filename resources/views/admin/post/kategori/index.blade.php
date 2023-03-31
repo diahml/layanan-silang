@@ -1,6 +1,10 @@
 @extends('layouts.inner')
 @section('containers')
-
+@if(session()->has('success'))
+  <div class="alert alert-success " role="alert">
+        {{ session('success') }}
+  </div>
+@endif
 <div class="card">
     <div class="card-body">
       <h5 class="card-title">Kategori Post </h5>
@@ -8,8 +12,8 @@
   
 
       <!-- Default Table -->
-      <table class="table">
-        <a href="/admin/kegiatan/kategori/create" class="btn btn-primary mb-3">Tambah Kategori Baru</a>
+      <table class="table table-borderless datatable">
+        <a href="/admin/post/kategori/create" class="btn btn-primary mb-3">Tambah Kategori Baru</a>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -24,10 +28,10 @@
               <th scope="row">{{ $loop->iteration }}</th>
               <td>{{ $post_category->name }}</td>
               <td>
-                <a href="/admin/kegiatan/kategori/{{ $post_category->id }}/edit"> 
+                <a href="/admin/post/kategori/{{ $post_category->id }}/edit"> 
                     <i class="bi bi-pencil-square text-warning"></i>
                 </a>
-                <form action="/admin/kegiatan/kategori/{{ $post_category->id }}" method="post" class="d-inline">
+                <form action="/admin/post/kategori/{{ $post_category->id }}" method="post" class="d-inline">
                   @method('delete')
                   @csrf
                   <button class="bi bi-trash text-danger border-0" onclick="return confirm('Apakah anda yakin untuk menghapus data?')"> </button>

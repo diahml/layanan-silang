@@ -8,8 +8,8 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class RiwayatExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     protected $data;
 
     public function __construct(array $data)
@@ -29,7 +29,7 @@ class RiwayatExport implements FromCollection, WithHeadings
             'Judul Buku',
             'No Buku',
             'Nomor Punggung Buku',
-            'Tanggel Pinjam',
+            'Tanggal Pinjam',
             'Tanggal Kembali',
         ];
     }

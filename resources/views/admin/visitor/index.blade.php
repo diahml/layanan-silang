@@ -30,7 +30,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $pres->name }}</td>
                   <td>{{ $pres->institution }}</td>
-                  <td>{{ $pres->phone}}</td>
+                  <td>0{{ $pres->phone}}</td>
                   <td>{{ $pres->created_at->diffForHumans() }}</td>
                 </tr>
                 @endforeach

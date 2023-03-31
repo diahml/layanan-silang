@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post_category;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\Post_category;
 
 class AdminPostCategoryController extends Controller
 {
@@ -14,10 +15,10 @@ class AdminPostCategoryController extends Controller
      */
     public function index()
     {
-        return view ('admin.post.kategori.index',[
-            "title"=>"Post Categories",
-            "active"=>"admin/kegiatan",
-            "post_categories"=>Post_category::all(),
+        return view('admin.post.kategori.index', [
+            "title" => "Post Categories",
+            "active" => "admin/kegiatan",
+            "post_categories" => Post_category::all(),
         ]);
     }
 
@@ -28,9 +29,9 @@ class AdminPostCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.post.kategori.create',[
-            "title"=>"Post Categories",
-            "active"=>'admin/kegiatan',
+        return view('admin.post.kategori.create', [
+            "title" => "Post Categories",
+            "active" => 'admin/kegiatan',
         ]);
     }
 
@@ -43,13 +44,13 @@ class AdminPostCategoryController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'=>'required',      
-         ]);
- 
- 
-         Post_category::create($validatedData);
- 
-         return redirect('/admin/kegiatan/kategori');
+            'name' => 'required',
+        ]);
+
+
+        Post_category::create($validatedData);
+
+        return redirect('/admin/post/kategori')->with('success', 'Success Add New Post Category!');
     }
 
     /**
@@ -71,10 +72,10 @@ class AdminPostCategoryController extends Controller
      */
     public function edit(Post_category $kategori)
     {
-        return view('admin.post.kategori.edit',[
-            "title"=>"Post Categories",
-            "active"=>"admin/kegiatan",
-            "post_category"=>$kategori,
+        return view('admin.post.kategori.edit', [
+            "title" => "Post Categories",
+            "active" => "admin/kegiatan",
+            "post_category" => $kategori,
         ]);
     }
 
@@ -88,15 +89,15 @@ class AdminPostCategoryController extends Controller
     public function update(Request $request, Post_category $kategori)
     {
         $rules = [
-            'name'=>'required',
-         ];
+            'name' => 'required',
+        ];
 
-         $validatedData=$request->validate($rules);
+        $validatedData = $request->validate($rules);
 
         Post_category::where('id', $kategori->id)
             ->update($validatedData);
 
-        return redirect('/admin/kegiatan/kategori');
+        return redirect('/admin/post/kategori')->with('success', 'Success Edit a Post Category!');
     }
 
     /**
@@ -107,8 +108,12 @@ class AdminPostCategoryController extends Controller
      */
     public function destroy(Post_category $kategori)
     {
-        Post_category::destroy($kategori->id);
-
-        return redirect('/admin/kegiatan/kategori');
+        $post = Post::select('*')->where('post_category_id', $kategori->id)->get();
+        if ($post->count()) {
+            return redirect('/admin/post/kategori')->with('unsuccess', 'You Cannot Delete This One Because This Category Still Has A Post');
+        } else {
+            Post_category::destroy($kategori->id);
+            return redirect('/admin/post/kategori')->with('success', 'Success Delete a Post Category!');
+        }
     }
 }

@@ -10,7 +10,7 @@
       @else
 
  <!-- Default Table -->
- <table class="table">
+ <table class="table table-borderless datatable">
     <thead>
       <tr>
         <th scope="col">#</th>

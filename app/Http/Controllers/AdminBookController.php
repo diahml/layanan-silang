@@ -155,6 +155,5 @@ class AdminBookController extends Controller
             return redirect('/admin/buku')->with('success', 'You Delete One Katalogue');
         }
 
-        return redirect('/admin/buku');
     }
 }

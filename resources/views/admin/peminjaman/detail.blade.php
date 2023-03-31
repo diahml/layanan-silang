@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-body">
       <h5 class="card-title">Konfirmasi Data Permohonan Peminjaman Buku {{ $peminjaman[0]->user->instansi }}</h5>
- <table class="table">
+      <table class="table table-borderless datatable">
     <thead>
       <tr>
         <th scope="col">#</th>

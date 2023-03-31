@@ -61,6 +61,7 @@
             <th scope="col">No Punggung Buku</th>
             <th scope="col">Tanggal Pinjam</th>
             <th scope="col">Tanggal Kembali</th>
+            <th scope="col">Deskripsi</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -76,6 +77,19 @@
             <td>{{ $peminjaman->book->backnum }}</td>
             <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
             <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td> 
+            <td>
+              @if($peminjaman->status=="dipinjam")
+              @if(\Carbon\Carbon::today() ==  \Carbon\Carbon::parse($peminjaman->tgl_kembali)) 
+              Hari ini batas akhir pengembalian buku
+              @elseif(\Carbon\Carbon::today() >=  \Carbon\Carbon::parse($peminjaman->tgl_kembali))
+              Pengembalian buku terlewat {{ \Carbon\Carbon::today()->diffInDays($borrow->tgl_kembali) }} hari           
+              @else 
+             Sisa Waktu Pengembalian Buku {{ \Carbon\Carbon::today()->diffInDays($peminjaman->tgl_kembali) }} hari lagi        
+              @endif
+              @else
+              Buku telah dikembalikan
+              @endif
+            </td>
             @if ($peminjaman->ke === 1)  
             <td><a href="/peminjaman/{{ $peminjaman->id }}/edit" class="btn btn-primary">Perpanjang</a></td>  
             @else

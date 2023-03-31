@@ -53,7 +53,11 @@
     </div>
     <div class="col-md-12">
         <label for="phone" class="form-label text-light">Phone</label>
-        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="type 62 instead of 0 (e.g. 6289624546570)">
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">+62</span>
+          <input type="phone" class="form-control @error('phone') is-invalid"  
+          @enderror id="phone" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+        </div>        
         @error('phone')
     <div class="invalid-feedback">
       {{ $message }}

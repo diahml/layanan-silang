@@ -31,7 +31,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $member->name }}</td>
                   <td>{{ $member->commissariat }}</td>
-                  <td>{{ $member->phone }}</td>
+                  <td>0{{ $member->phone }}</td>
                   <td>
                     @if($member->is_member==1) 
                     GenBI

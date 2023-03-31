@@ -1,8 +1,17 @@
 @extends('admin.layout.main')
 
 @section('container')
-
 <div class="card">
+  @if(session()->has('success'))
+  <div class="alert alert-success " role="alert">
+        {{ session('success') }}
+  </div>
+@endif
+@if(session()->has('unsuccess'))
+  <div class="alert alert-danger " role="alert">
+        {{ session('unsuccess') }}
+  </div>
+@endif
     <div class="card-body">
       <h5 class="card-title">Kategori Buku </h5>
       <table>

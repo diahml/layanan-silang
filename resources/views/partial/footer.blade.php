@@ -22,9 +22,9 @@
           <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto">
             <!-- Content -->
-            <h6 class="fw-bold mb-4">
-              <i class="fas fa-gem me-3 text-secondary"></i>Perpustakaan Bank Indonesia Kantor Perwakilan Purwokerto
+            <h6 class="text-uppercase fw-bold mb-4 text-center">Perpustakaan Bank Indonesia Kantor Perwakilan Purwokerto
             </h6>
+            <div class="text-center">
               <b> Jadwal Kunjungan</b>
               <p>SENIN - JUMAT 
                 <br>
@@ -33,14 +33,15 @@
              
               <b>website</b><br>
               <a href="http://www.bi.go.id" class="text-decoration-none text-dark">http://www.bi.go.id</a>
-              
+            </div>
           </div>
           <!-- Grid column -->
 
   
           <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0">
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 ">
             <!-- Links -->
+            <div class="text-center">
             <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
             <p><i class="fas fa-home me-3 text-secondary"></i> Jl. Jend. Gatot Subroto No.98, Brubahan, Purwanegara, Kec. Purwokerto Timur, Kab. Banyumas, Jawa Tengah</p>
             <p>
@@ -48,6 +49,7 @@
               info@example.com
             </p>
             <p><i class="fas fa-phone me-3 text-secondary"></i> (0281) 631632</p>
+            </div>
           </div>
           <!-- Grid column -->
         </div>

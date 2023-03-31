@@ -19,7 +19,7 @@ class PeminjamanController extends Controller
     {
         return view ('peminjaman.index',[
             "active"=>"peminjaman",
-            "title"=>"Peminjaman",
+            "title"=>"Dashboard Peminjaman",
             "peminjaman"=>Peminjaman::select('*')->where([
                 ['user_id', auth()->user()->id],
                 ['status', 'diajukan peminjaman'],
@@ -34,8 +34,8 @@ class PeminjamanController extends Controller
     public function riwayat()
     {
         return view ('peminjaman.riwayat',[
-            "active"=>"peminjaman",
-            "title"=>"Peminjaman",
+            "active"=>"riwayat",
+            "title"=>"Riwayat Peminjaman",
             "peminjaman"=>Peminjaman::select('*')->where([
                 ['user_id', auth()->user()->id],
                 ['status', 'dikembalikan'],
@@ -51,7 +51,8 @@ class PeminjamanController extends Controller
     public function create()
     {
         return view('peminjaman.create',[
-            "active"=>'peminjaman',
+            "active"=>'pinjam',
+            "title"=> "Pengajuan Peminjaman",
             "books"=>Book::all(),
             "peminjaman"=>Peminjaman::select('*')->where([
                 ['user_id', auth()->user()->id],
@@ -97,8 +98,8 @@ class PeminjamanController extends Controller
 
     public function peraturan(){
         return view ('peminjaman.peraturan',[
-            "active"=>"peminjaman",
-            "title"=>"Peminjaman",
+            "active"=>"pinjam",
+            "title"=>"Peraturan Peminjaman",
         ]);
     }
 
@@ -135,7 +136,8 @@ class PeminjamanController extends Controller
     public function edit(Peminjaman $peminjaman)
     {
         return view('peminjaman.perpanjang',[
-            "active"=>"peminjaman",
+            "active"=>"pinjam",
+            "title" => "Perpanjangan Peminjaman",
             "peminjaman"=>Peminjaman::all(),
             "peminjaman"=>$peminjaman,
         ]);

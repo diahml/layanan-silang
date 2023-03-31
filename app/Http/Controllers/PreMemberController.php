@@ -46,7 +46,7 @@ class PreMemberController extends Controller
             'phone' => 'required',
             'idcard' => 'image|file|max:10024',
         ]);
-        $validatedData['password'] = bcrypt($validatedData['phone']);
+        $validatedData['password'] = bcrypt('62'.$validatedData['phone']);
         $validatedData['is_admin'] = false;
 
         if ($request->file('idcard')) {

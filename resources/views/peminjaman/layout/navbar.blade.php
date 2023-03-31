@@ -1,7 +1,11 @@
 <header id="header" class="header fixed-top d-flex align-items-center mb-5">
     <div class="container d-flex align-items-center justify-content-between">
-  
-      <h1 class="logo"><a href="/">Layanan Silang<span></span></a></h1>
+      <a href="/" class="logo d-flex align-items-center text-decoration-none">
+
+      <img src="/vendors/img/logo.png" alt="">
+
+      <h1 class="d-flex align-items-center text-light font-weight-bold">Layanan Silang<span></span></h1>
+      </a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
   

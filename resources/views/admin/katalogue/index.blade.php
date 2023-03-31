@@ -28,7 +28,7 @@
   </div>
 
   <!-- Default Table -->
-  <table class="table" id="myItems">
+    <table class="table table-borderless datatable" id="myItems">
     <thead>
       <tr>
         <th scope="col">#</th>

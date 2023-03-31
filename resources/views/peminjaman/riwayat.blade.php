@@ -33,9 +33,9 @@
                       <th scope="row">1</th>
                       {{-- <td>{{ $peminjaman->user->instansi }}</td>
                       <td>{{ $peminjaman->user->kontak }}</td> --}}
-                      <td>{{ $peminjaman->book->judul }}</td>
-                      <td>{{ $peminjaman->book->no_buku }}</td>
-                      <td>{{ $peminjaman->book->npb }}</td>
+                      <td>{{ $peminjaman->book->title }}</td>
+                      <td>{{ $peminjaman->book->booknum }}</td>
+                      <td>{{ $peminjaman->book->backnum }}</td>
                       <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
                       <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td>
                     </tr>

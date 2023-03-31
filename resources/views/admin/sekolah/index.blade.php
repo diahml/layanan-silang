@@ -21,7 +21,7 @@
       </table>
 
       <!-- Default Table -->
-      <table class="table">
+      <table class="table table-borderless datatable">
         
         <thead>
           <tr>

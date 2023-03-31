@@ -47,7 +47,6 @@
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="/vendors/img/logo.png" alt="">
         {{-- <img src="/vendors/img/favicon.png" alt=""> --}}
-
         <h1 class="d-flex align-items-center">BI-STAKA</h1>
       </a>
 

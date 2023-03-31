@@ -20,7 +20,7 @@
       @else
 
  <!-- Default Table -->
- <table class="table">
+ <table class="table table-borderless datatable">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -28,6 +28,7 @@
         <th scope="col">No PIC</th>
         <th scope="col">Tanggal Pinjam</th>
         <th scope="col">Tanggal Kembali</th>
+        <th scope="col">Deskripsi</th>
         <th scope="col">Action</th>
         
       </tr>
@@ -40,6 +41,19 @@
         <td>0{{ $peminjaman->user->phone }}</td>
         <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
         <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td>
+        <td>
+          @if($peminjaman->status=="dipinjam")
+              @if(\Carbon\Carbon::today() ==  \Carbon\Carbon::parse($peminjaman->tgl_kembali)) 
+              Hari ini batas akhir pengembalian buku
+              @elseif(\Carbon\Carbon::today() >=  \Carbon\Carbon::parse($peminjaman->tgl_kembali))
+              Pengembalian buku terlewat {{ \Carbon\Carbon::today()->diffInDays($borrow->tgl_kembali) }} hari           
+              @else 
+             Sisa Waktu Pengembalian Buku {{ \Carbon\Carbon::today()->diffInDays($peminjaman->tgl_kembali) }} hari lagi        
+              @endif
+              @else
+              Buku telah dikembalikan
+              @endif
+        </td>
         <td>
           <a href="/admin/peminjaman/dipinjam/{{ $peminjaman->user_id }}"> 
               <i class="bi bi-eye"></i>

@@ -20,7 +20,7 @@
       @else
      
                  <!-- Default Table -->
-                 <table class="table">
+                 <table class="table table-borderless datatable">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -37,10 +37,10 @@
                     @foreach ($peminjaman as $peminjaman)
                     <tr>
                       <th scope="row">{{ $loop->iteration}}</th>
-                      <td>{{ $peminjaman->user->instansi }}</td>
-                      <td>{{ $peminjaman->book->judul }}</td>
-                      <td>{{ $peminjaman->book->no_buku }}</td>
-                      <td>{{ $peminjaman->book->npb }}</td>
+                      <td>{{ $peminjaman->user->name }}</td>
+                      <td>{{ $peminjaman->book->title }}</td>
+                      <td>{{ $peminjaman->book->booknum }}</td>
+                      <td>{{ $peminjaman->book->backnum }}</td>
                       <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_pinjam)->format('d M Y') }}</td>
                       <td>{{ \Carbon\Carbon::parse($peminjaman->tgl_kembali)->format('d M Y') }}</td>
                     </tr>
