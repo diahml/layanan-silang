@@ -237,8 +237,8 @@ Route::get('/admin/suggest/approve/{id_suggest}', [SuggestController::class, 'ap
 
 
 // member interface
+Route::get('/member/frontpage/show/{id_member}', [MemberController::class, 'show'])->middleware('member');
 Route::get('/member/frontpage', [MemberFront::class, 'index'])->middleware('member');
 Route::get('/member/catalogue/shows/{id_book}', [MemberFront::class, 'shows'])->middleware('member');
-Route::get('/member/frontpage/show/{id_member}', [MemberController::class, 'show'])->middleware('member');
 Route::get('/member/historyborrow', [BorrowController::class, 'history'])->middleware('member');
 Route::resource('/member/suggest', SuggestController::class)->middleware('member');

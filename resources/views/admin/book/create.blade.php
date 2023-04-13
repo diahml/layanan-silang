@@ -18,7 +18,7 @@
               <h5 class="card-title">Add New Book</h5>
 
               <!-- Vertical Form -->
-              <form method="POST" action="/admin/katalogue" class="row g-3" enctype="multipart/form-data">
+              <form method="POST" action="/admin/buku" class="row g-3" enctype="multipart/form-data">
                 @csrf
                 <div class="col-12">
                   <label for="title" class="form-label">Title</label>

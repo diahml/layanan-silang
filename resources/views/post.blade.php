@@ -7,7 +7,7 @@
         <div class="col-md-10">
             <h3 class="mb-3">{{ $post->title }}</h3>
             
-            <p>Category : <a href="/post_categories/{{ $post->post_category->slug }}"> {{$post->post_category->name }} </a></p>
+            <p>{{$post->post_category->name }}</p>
 
             @if ($post->image)
             <div style="overflow:hidden; object-fit: cover;">

@@ -18,7 +18,9 @@ class MemberController extends Controller
         return view('admin.membering.index', [
             'title' => 'Data Member',
             'active' => 'data-member',
-            'members' =>  User::all()
+            'members' =>  User::where('is_member', 1)
+            ->orWhere('is_admin', 1)
+            ->get()
         ]);
     }
 

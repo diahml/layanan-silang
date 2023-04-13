@@ -16,8 +16,8 @@
   </div><!-- End Page Title -->
 
 @foreach($borrows as $borrow)
-          @if(!isset($borrow->book->id)|| !($borrow->book->cover))
-          <div class="card mb-3" style="background-image: url(https://picsum.photos/400/200); height:300px; background-size: cover; background-position: center;">
+          @if(!isset($borrow->book->id)|| !($borrow->book->image))
+          <div class="card mb-3" style="background-image: url({{ asset('storage/'. $book->image) }}); height:300px; background-size: cover; background-position: center;">
             <div class="row g-0 message-block">
               <h5 class="card-title text-dark ">Most Popular</h5>
               <h5 class="card-title p-0">{{ $book->title }}</h5>
@@ -25,7 +25,7 @@
             </div>
           </div>
           @else
-          <div class="card mb-3" style="background-image: url({{ asset('storage/'. $borrow->book->cover) }}); height:300px; background-size: cover; background-position: center;">
+          <div class="card mb-3" style="background-image: url({{ asset('storage/'. $borrow->book->image) }}); height:300px; background-size: cover; background-position: center;">
             <div class="row g-0 message-block">
               <h5 class="card-title text-dark ">Most Popular</h5>
               <h5 class="card-title p-0">{{ $borrow->book->title }}</h5>

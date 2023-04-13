@@ -37,9 +37,8 @@
                   <td>0{{ $register->phone }}</td>
                   <td><img src="{{ asset('storage/'. $register->idcard) }}" class="img-fluid" style="width: 15rem; height: 10rem;"></td>
                   <td>
-                    @if($register->is_member==1) 
+                    @if($register->is_admin==0) 
                     GenBI
-                    @elsif($register->is_admin==1) 
                     @else 
                     Librarian
                     @endif

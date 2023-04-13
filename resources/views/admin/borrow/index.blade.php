@@ -34,7 +34,11 @@
         
         <tr>
             <td>{{ $loop->iteration }}</td>
+            @if(!isset($borrow->member->id))
+            <td>user isn't a member again</td>
+            @else
             <td>{{ $borrow->member->name }}</td>
+            @endif
             @if(!isset($borrow->book->id))
             <td>book has been deleted</td>
             @else
