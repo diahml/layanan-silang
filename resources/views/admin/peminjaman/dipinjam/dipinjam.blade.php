@@ -36,7 +36,7 @@
               @if(\Carbon\Carbon::today() ==  \Carbon\Carbon::parse($peminjaman->tgl_kembali)) 
               Hari ini batas akhir pengembalian buku
               @elseif(\Carbon\Carbon::today() >=  \Carbon\Carbon::parse($peminjaman->tgl_kembali))
-              Pengembalian buku terlewat {{ \Carbon\Carbon::today()->diffInDays($borrow->tgl_kembali) }} hari           
+              Pengembalian buku terlewat {{ \Carbon\Carbon::today()->diffInDays($peminjaman->tgl_kembali) }} hari           
               @else 
              Sisa Waktu Pengembalian Buku {{ \Carbon\Carbon::today()->diffInDays($peminjaman->tgl_kembali) }} hari lagi        
               @endif
