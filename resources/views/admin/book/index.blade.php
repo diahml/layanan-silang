@@ -35,6 +35,7 @@
         <th scope="col">Judul</th>
         <th scope="col">Penulis</th>
         <th scope="col">Kategori</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -45,6 +46,13 @@
           <td class="td">{{ $book->title }}</td>
           <td class="td">{{ $book->author }}</td>
           <td>{{ $book->category->name }}</td>
+          <td class="td">
+            @if($book->stock >= 1)
+            <p class="text-primary"> Available</p>
+            @else
+            <p class="text-danger">Unavailable</p>
+            @endif    
+          </td>
           <td>
             <a  class="badge bg-info" href="/admin/buku/{{$book->id}}"><i class="bi bi-eye-fill"></i></a>
                 <a href="/admin/buku/{{ $book->id }}/edit"> 

@@ -59,15 +59,20 @@
                       <option value="Librarian">Librarian</option>
                     </select>
                 </div>
+
                 <div class="col-12">
-                    <label for="phone" class="form-label">Phone</label>
-                    <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"  value="{{ old('phone', $m->phone) }}">
+                  <label for="commissariat" class="form-label">Phone Number</label>
+                  <div class="form-floating">
+                    <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1">+62</span>
+                      <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Phone Number" value="{{ old('phone', $m->phone) }}">
+                    </div>
                     @error('phone')
-                <div class="invalid-feedback">
-                  {{ $message }}
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
                 </div>
-                @enderror
-                </div>
+              
                 
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Edit Member</button>
