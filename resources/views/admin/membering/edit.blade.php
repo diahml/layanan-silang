@@ -50,13 +50,14 @@
                     <input type="hidden" class="form-control" id="is_admin" name="is_admin">
                   </div>
                 <div class="col-12">
-                    <label for="commissariat" class="form-label">Commissariat</label>
+                    <label for="commissariat" class="form-label">Commissariat/Pihak</label>
                     <select id="commissariat" name="commissariat" class="form-select">
                       <option value="{{ $m->commissariat }}" selected hidden>{{ $m->commissariat }}</option>
                       <option value="Universitas Jenderal Soedirman">Universitas Jenderal Soedirman</option>
                       <option value="Universitas Muhammadiyah Purwokerto">Universitas Muhammadiyah Purwokerto</option>
                       <option value="UIN Saizu Purwokerto">UIN Saizu Purwokerto</option>
                       <option value="Librarian">Librarian</option>
+                      <option value="Internal Bank Indonesia">Internal Bank Indonesia</option>
                     </select>
                 </div>
 
