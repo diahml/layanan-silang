@@ -56,7 +56,7 @@
                   </div>
 
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Commissariat</div>
+                  <div class="col-lg-3 col-md-4 label">Commissariat/Pihak</div>
                   <div class="col-lg-9 col-md-8">{{ $s->commissariat }}</div>
                 </div>
 
