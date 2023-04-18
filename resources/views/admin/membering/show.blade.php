@@ -54,7 +54,7 @@
                     <div class="col-lg-3 col-md-4 label">Address</div>
                     <div class="col-lg-9 col-md-8">{{ $s->address }}</div>
                   </div>
-                @if($s->commissariat=="Librarian")
+                @if($s->commissariat=="Librarian" && "Internal Bank Indonesia")
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Position</div>
                   <div class="col-lg-9 col-md-8">{{ $s->commissariat }}</div>

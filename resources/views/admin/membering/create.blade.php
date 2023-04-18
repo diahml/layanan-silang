@@ -49,24 +49,28 @@
                     <input type="hidden" class="form-control" id="is_admin" name="is_admin">
                   </div>
                 <div class="col-12">
-                    <label for="commissariat" class="form-label">Commissariat</label>
+                    <label for="commissariat" class="form-label">Commissariat/Pihak</label>
                     <select id="commissariat" name="commissariat" class="form-select">
                       <option selected hidden>Choose...</option>
                       <option value="Universitas Jenderal Soedirman">Universitas Jenderal Soedirman</option>
                       <option value="Universitas Muhammadiyah Purwokerto">Universitas Muhammadiyah Purwokerto</option>
                       <option value="UIN Saizu Purwokerto">UIN Saizu Purwokerto</option>
+                      <option value="Internal Bank Indonesia">Internal Bank Indonesia</option>
                     </select>
                 </div>
                 <div class="col-12">
-                    <label for="phone" class="form-label">Phone</label>
-                    <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone">
+                  <label for="commissariat" class="form-label">Phone Number</label>
+                  <div class="form-floating">
+                    <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1">+62</span>
+                      <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Phone Number" value="{{ old('phone') }}">
+                    </div>
                     @error('phone')
-                <div class="invalid-feedback">
-                  {{ $message }}
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
                 </div>
-                @enderror
-                </div>
-                
+                 
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Add Member</button>
                 </div>
