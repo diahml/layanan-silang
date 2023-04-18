@@ -52,6 +52,16 @@
   
     </div>
   </header>
+
+  <style>
+    .header .logo h1 {
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+        font-family: var(--font-secondary);
+        margin: 0;
+    }
+    </style>
   
   {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="container mt-2 mb-2">
