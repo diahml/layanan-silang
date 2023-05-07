@@ -25,7 +25,7 @@
               <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                 <div class="icon"><i class="bi bi-1-circle"></i></div>
                 <h4 class="title">Layanan Baca</h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                {{-- <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p> --}}
               </div>
             </div>
   
@@ -33,7 +33,7 @@
               <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon"><i class="bi bi-2-circle"></i></div>
                 <h4 class="title">Layanan Kids Corner</h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                {{-- <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p> --}}
               </div>
             </div>
 
@@ -41,7 +41,7 @@
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon"><i class="bi bi-3-circle"></i></div>
                   <h4 class="title">Layanan Pemustaka</h4>
-                  <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                  {{-- <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p> --}}
                 </div>
               </div>
   
@@ -49,7 +49,7 @@
               <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon"><i class="bi bi-4-circle"></i></div>
                 <h4 class="title">Layanan Silang</h4>
-                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                {{-- <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p> --}}
               </div>
             </div>
   
@@ -57,7 +57,7 @@
               <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon"><i class="bi bi-5-circle"></i></div>
                 <h4 class="title">Layanan CLick and Read</h4>
-                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                {{-- <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p> --}}
               </div>
             </div>
 
@@ -65,7 +65,7 @@
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                   <div class="icon"><i class="bi bi-6-circle"></i></div>
                   <h4 class="title">Layanan IBI Library</h4>
-                  <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                  {{-- <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p> --}}
                 </div>
               </div>
 
@@ -73,7 +73,7 @@
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                   <div class="icon"><i class="bi bi-7-circle"></i></div>
                   <h4 class="title">Layanan Referensi</h4>
-                  <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                  {{-- <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p> --}}
                 </div>
               </div>
 
@@ -81,7 +81,7 @@
                 <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                   <div class="icon"><i class="bi bi-8-circle"></i></div>
                   <h4 class="title">Layanan Sirkulasi</h4>
-                  <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                  {{-- <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p> --}}
                 </div>
               </div>
   

@@ -1,4 +1,5 @@
-@extends('admin.layout.main')
+@extends('peminjaman.layout.main')
+@extends('partial.link')
 
 @section('container')
 
