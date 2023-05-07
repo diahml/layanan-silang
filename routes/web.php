@@ -39,9 +39,9 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', function () {
-    return view ('home',[
-        "title"=>"Home",
-        "active"=>"home"
+    return view('home', [
+        "title" => "Home",
+        "active" => "home"
     ]);
 });
 
@@ -69,9 +69,9 @@ Route::middleware('guest')->group(function () {
 // });
 
 Route::get('/katalog-buku', function () {
-    return view ('katalog',[
-        "title"=>"Katalog Buku",
-        "active"=>"katalog"
+    return view('katalog', [
+        "title" => "Katalog Buku",
+        "active" => "katalog"
     ]);
 });
 
@@ -86,9 +86,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/catalogue', [BookController::class, 'frontcatalogue'])->middleware('guest');
 
 
-Route::get('posts/{post:slug}', [PostController::class,'show']);
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/admin', [AdminController::class,'index'])->middleware('admin');
+Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
 
 // Route::get('/post_categories', function(){
 //     return view('categories', [
@@ -105,47 +105,47 @@ Route::get('/admin/membering/delete/{id_register}', [MemberController::class, 'd
 
 
 
-Route::get('/post_categories/{post_category:slug}', function(Post_category $post_category){
+Route::get('/post_categories/{post_category:slug}', function (Post_category $post_category) {
     return view('post_category', [
-        'title'=>$post_category->name,
-        'posts'=>$post_category->posts->load('post_category'),
-        'post_category'=>$post_category->name,
-        'active'=>"kegiatan"
+        'title' => $post_category->name,
+        'posts' => $post_category->posts->load('post_category'),
+        'post_category' => $post_category->name,
+        'active' => "kegiatan"
     ]);
 });
 
-Route::get('/admin/peminjaman/dipinjam/{peminjamen}',[AdminPeminjamanController::class,'dipinjam'])->middleware('admin');
+Route::get('/admin/peminjaman/dipinjam/{peminjamen}', [AdminPeminjamanController::class, 'dipinjam'])->middleware('admin');
 
-Route::get('/admin/peminjaman/dikembalikan/{peminjaman:id}',[AdminPeminjamanController::class,'dikembalikan'])->middleware('admin');
+Route::get('/admin/peminjaman/dikembalikan/{peminjaman:id}', [AdminPeminjamanController::class, 'dikembalikan'])->middleware('admin');
 
-Route::get('/admin/peminjaman/approved/{peminjaman:id}',[AdminPeminjamanController::class,'approved'])->middleware('admin');
+Route::get('/admin/peminjaman/approved/{peminjaman:id}', [AdminPeminjamanController::class, 'approved'])->middleware('admin');
 
-Route::get('/admin/peminjaman/ditolak/{peminjaman:id}',[AdminPeminjamanController::class,'ditolak'])->middleware('admin');
+Route::get('/admin/peminjaman/ditolak/{peminjaman:id}', [AdminPeminjamanController::class, 'ditolak'])->middleware('admin');
 
-Route::get('/admin/peminjaman/dipinjam',[AdminPeminjamanController::class,'lihatPinjam'])->middleware('admin');
+Route::get('/admin/peminjaman/dipinjam', [AdminPeminjamanController::class, 'lihatPinjam'])->middleware('admin');
 
 
-Route::get('/admin/peminjaman/riwayat',[AdminPeminjamanController::class, 'riwayat'])->middleware('admin');
+Route::get('/admin/peminjaman/riwayat', [AdminPeminjamanController::class, 'riwayat'])->middleware('admin');
 
-Route::get('/admin/peminjaman/{peminjamen}', [AdminPeminjamanController::class,'edit'])->middleware('admin');
+Route::get('/admin/peminjaman/{peminjamen}', [AdminPeminjamanController::class, 'edit'])->middleware('admin');
 
-Route::get('/admin/peminjaman/dipinjam/{peminjaman:id}',[AdminPeminjamanController::class,'deletePeminjaman'])->middleware('admin');
+Route::get('/admin/peminjaman/dipinjam/{peminjaman:id}', [AdminPeminjamanController::class, 'deletePeminjaman'])->middleware('admin');
 
 Route::resource('/admin/peminjaman', AdminPeminjamanController::class)->middleware('admin');
 
 
-Route::get('/peminjaman/update/{peminjaman:id}',[PeminjamanController::class,'updatePerpanjang'])->middleware('school');
+Route::get('/peminjaman/update/{peminjaman:id}', [PeminjamanController::class, 'updatePerpanjang'])->middleware('school');
 
-Route::get('/peminjaman/perpanjang/{peminjaman}',[PeminjamanController::class,'perpanjang'])->middleware('school');
+Route::get('/peminjaman/perpanjang/{peminjaman}', [PeminjamanController::class, 'perpanjang'])->middleware('school');
 
-Route::get('/peminjaman/riwayat', [PeminjamanController::class,'riwayat'])->middleware('school');
+Route::get('/peminjaman/riwayat', [PeminjamanController::class, 'riwayat'])->middleware('school');
 
 Route::get('/peminjaman/peraturan', [PeminjamanController::class, 'peraturan'])->middleware('school');
 
 Route::resource('/peminjaman', PeminjamanController::class)->middleware('school');
 
 
-Route::get('/admin/post/checkSlug',[AdminPostController::class,'checkSlug'])->middleware('admin');
+Route::get('/admin/post/checkSlug', [AdminPostController::class, 'checkSlug'])->middleware('admin');
 
 Route::resource('/admin/post/kategori', AdminPostCategoryController::class)->middleware('admin');
 
@@ -160,24 +160,24 @@ Route::resource('/admin/buku', AdminBookController::class)->middleware('admin');
 Route::resource('/admin/sekolah', AdminSekolahController::class)->middleware('admin');
 
 
-Route::get('/katalog-buku', [KatalogController::class,'index']);
+Route::get('/katalog-buku', [KatalogController::class, 'index']);
 
-Route::get('/blog', [PostController::class,'index']);
+Route::get('/blog', [PostController::class, 'index']);
 
-Route::get('/katalog-buku/{book_category:kelas}', [KatalogController::class,'show']);
+Route::get('/katalog-buku/{book_category:kelas}', [KatalogController::class, 'show']);
 
 //Report download
-Route::get('/book-export_pdf',[ExportController::class, 'bookpdf'])->middleware('admin');
-Route::get('/book_category-export_pdf',[ExportController::class, 'book_categorypdf'])->middleware('admin');
-Route::get('/peminjaman-export_pdf',[ExportController::class, 'peminjamanpdf'])->middleware('admin');
-Route::get('/riwayat-export_pdf',[ExportController::class, 'riwayatpdf'])->middleware('admin');
-Route::get('/data-sekolah-export_pdf',[ExportController::class, 'sekolahpdf'])->middleware('admin');
+Route::get('/book-export_pdf', [ExportController::class, 'bookpdf'])->middleware('admin');
+Route::get('/book_category-export_pdf', [ExportController::class, 'book_categorypdf'])->middleware('admin');
+Route::get('/peminjaman-export_pdf', [ExportController::class, 'peminjamanpdf'])->middleware('admin');
+Route::get('/riwayat-export_pdf', [ExportController::class, 'riwayatpdf'])->middleware('admin');
+Route::get('/data-sekolah-export_pdf', [ExportController::class, 'sekolahpdf'])->middleware('admin');
 
-Route::get('/book-export_excel',[ExportController::class, 'bookexcel'])->middleware('admin');
-Route::get('/book_category-export_excel',[ExportController::class, 'book_categoryexcel'])->middleware('admin');
-Route::get('/peminjaman-export_excel',[ExportController::class, 'peminjamanexcel'])->middleware('admin');
-Route::get('/riwayat-export_excel',[ExportController::class, 'riwayatexcel'])->middleware('admin');
-Route::get('/data-sekolah-export_excel',[ExportController::class, 'sekolahexcel'])->middleware('admin');
+Route::get('/book-export_excel', [ExportController::class, 'bookexcel'])->middleware('admin');
+Route::get('/book_category-export_excel', [ExportController::class, 'book_categoryexcel'])->middleware('admin');
+Route::get('/peminjaman-export_excel', [ExportController::class, 'peminjamanexcel'])->middleware('admin');
+Route::get('/riwayat-export_excel', [ExportController::class, 'riwayatexcel'])->middleware('admin');
+Route::get('/data-sekolah-export_excel', [ExportController::class, 'sekolahexcel'])->middleware('admin');
 
 // Route::get('katalog-buku/{book_category:kelas}',function (Book_category $book_category){
 //     return view('book',[
@@ -201,6 +201,7 @@ Route::get('/admin/katalogue/hapusreview/{id_review}', [ReviewController::class,
 
 
 // // katalogue
+Route::get('/admin/katalogue/pdfcatalogue', [AdminBookController::class, 'pdfcatalogue'])->middleware('admin');
 // Route::get('/admin/katalogue/checkSlug', [BookController::class, 'checkSlug'])->middleware('admin');
 // Route::get('/admin/katalogue/edit/{id_book}', [BookController::class, 'edit'])->middleware('admin');
 // Route::get('/admin/katalogue/destroy/{id_book}', [BookController::class, 'destroy'])->middleware('admin');

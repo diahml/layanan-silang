@@ -19,8 +19,8 @@ class MemberController extends Controller
             'title' => 'Data Member',
             'active' => 'data-member',
             'members' =>  User::where('is_member', 1)
-            ->orWhere('is_admin', 1)
-            ->get()
+                ->orWhere('is_admin', 1)
+                ->get()
         ]);
     }
 
@@ -98,7 +98,7 @@ class MemberController extends Controller
             'commissariat' => 'required',
             'phone' => 'required'
         ]);
-        $validatedData['password'] = bcrypt('62'.$validatedData['phone']);
+        $validatedData['password'] = bcrypt('62' . $validatedData['phone']);
         $validatedData['is_admin'] = false;
 
         User::create($validatedData);
@@ -162,12 +162,15 @@ class MemberController extends Controller
         ];
 
         $validatedData = $request->validate($rules);
-        $validatedData['password'] = bcrypt($validatedData['phone']);
+        $validatedData['password'] = bcrypt('62' . $validatedData['phone']);
         $validatedData['is_admin'] = false;
 
         if ($validatedData['commissariat'] == "Librarian") {
             $validatedData['is_admin'] = true;
             $validatedData['is_member'] = false;
+        } if ($validatedData['commissariat'] == "Internal Bank Indonesia") {
+            $validatedData['is_admin'] = false;
+            $validatedData['is_member'] = true;
         }
 
         User::where('id', $id_member)

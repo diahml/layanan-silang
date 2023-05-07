@@ -26,7 +26,14 @@ class AdminBookController extends Controller
         ]);
     }
 
-
+    public function pdfcatalogue()
+    {
+        return view('admin.katalogue.pdfcatalogue', [
+            'title' => 'PDF Report',
+            'active' => 'data-book',
+            'books' => Book::all(),
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

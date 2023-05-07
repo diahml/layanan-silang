@@ -33,8 +33,8 @@
                   <td>{{ $member->commissariat }}</td>
                   <td>62{{ $member->phone }}</td>
                   <td>
-                    @if($member->is_member==1) 
-                    GenBI              
+                    @if($member->is_member==1 ) 
+                    GenBI/Internal
                     @else
                     Librarian
                     @endif
